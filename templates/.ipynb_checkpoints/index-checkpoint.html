@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Scraped Fonorow</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mars Information!</h1>
+      <p>Fresh from the Web!</p>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get The Freshest Data!</a></p>
+    </div>
+    <img src="{{ data.img[1] }}" alt="featured_img">
+      <h2>{{ data.img[0] }}</h2>
+      <hr>
+    <h2>Mars News :</h2>
+    <h3>{{ data.news[0] }}</h3>
+    <h5>{{ data.news[1] }}</h5>
+      <hr>
+      <h2>Mars Weather : </h2>
+      <h3>{{ data.weather }}</h3>
+      <hr>
+      <h2>Mars Facts : </h2>
+      {{ data.facts | safe}}
+      <hr>
+      {% for hemi in data.hemi %}
+          <div class="col-lg-12">
+              <div class="card" style="width: 20rem;">
+                  <div class="card-body">
+                    <h4 class="card-title">{{ hemi.title }}</h4>
+                    <img src="{{ hemi.img_url }}" alt='{{ hemi.title }}'>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+    </div>
+</body>
+</html>
